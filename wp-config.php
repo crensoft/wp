@@ -23,22 +23,22 @@ require_once(__DIR__ . '/wp-env.php');
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', $_ENV['DB_NAME'] );
+define( 'DB_NAME', $_ENV['WP_DB_NAME'] );
 
 /** MySQL database username */
-define( 'DB_USER', $_ENV['DB_USER'] );
+define( 'DB_USER', $_ENV['WP_DB_USER'] );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', $_ENV['DB_PASSWORD'] );
+define( 'DB_PASSWORD', $_ENV['WP_DB_PASSWORD'] );
 
 /** MySQL hostname */
-define( 'DB_HOST', $_ENV['DB_HOST'] );
+define( 'DB_HOST', $_ENV['WP_DB_HOST'] );
 
 /** Database Charset to use in creating database tables. */
-define( 'DB_CHARSET', $_ENV['DB_CHARSET'] );
+define( 'DB_CHARSET', $_ENV['WP_DB_CHARSET'] );
 
 /** The Database Collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', $_ENV['DB_COLLATE'] );
+define( 'DB_COLLATE', $_ENV['WP_DB_COLLATE'] );
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -49,14 +49,14 @@ define( 'DB_COLLATE', $_ENV['DB_COLLATE'] );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         $_ENV['AUTH_KEY'] );
-define( 'SECURE_AUTH_KEY',  $_ENV['SECURE_AUTH_KEY'] );
-define( 'LOGGED_IN_KEY',    $_ENV['LOGGED_IN_KEY'] );
-define( 'NONCE_KEY',        $_ENV['NONCE_KEY'] );
-define( 'AUTH_SALT',        $_ENV['AUTH_SALT'] );
-define( 'SECURE_AUTH_SALT', $_ENV['SECURE_AUTH_SALT'] );
-define( 'LOGGED_IN_SALT',   $_ENV['LOGGED_IN_SALT'] );
-define( 'NONCE_SALT',       $_ENV['NONCE_SALT'] );
+define( 'AUTH_KEY',         $_ENV['WP_AUTH_KEY'] );
+define( 'SECURE_AUTH_KEY',  $_ENV['WP_SECURE_AUTH_KEY'] );
+define( 'LOGGED_IN_KEY',    $_ENV['WP_LOGGED_IN_KEY'] );
+define( 'NONCE_KEY',        $_ENV['WP_NONCE_KEY'] );
+define( 'AUTH_SALT',        $_ENV['WP_AUTH_SALT'] );
+define( 'SECURE_AUTH_SALT', $_ENV['WP_SECURE_AUTH_SALT'] );
+define( 'LOGGED_IN_SALT',   $_ENV['WP_LOGGED_IN_SALT'] );
+define( 'NONCE_SALT',       $_ENV['WP_NONCE_SALT'] );
 
 /**#@-*/
 
