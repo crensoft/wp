@@ -19,7 +19,7 @@
  */
 
  /** Import env */
-require_once(__DIR__ . './wp-content/wp-env.php');
+require_once(__DIR__ . '/wp-env.php');
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
