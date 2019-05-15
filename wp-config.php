@@ -82,17 +82,17 @@ $table_prefix = 'wp_';
  */
 define( 'WP_DEBUG', $_ENV['WP_DEBUG'] === '1' );
 
+/** Install plugins without ftp access
+ * https://stackoverflow.com/questions/640409/can-i-install-update-wordpress-plugins-without-providing-ftp-access
+*/
+define('FS_METHOD', 'direct');
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
-
-/** Install plugins without ftp access
- * https://stackoverflow.com/questions/640409/can-i-install-update-wordpress-plugins-without-providing-ftp-access
-*/
-define('FS_METHOD', 'direct');
 
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );
