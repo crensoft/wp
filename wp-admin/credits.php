@@ -25,7 +25,15 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 	?>
 </h1>
 
-<p class="about-text"><?php printf( __( 'Congratulations on updating to WordPress 5.2! This update makes it easier than ever to fix your site if something goes wrong.' ), $display_version ); ?></p>
+<p class="about-text">
+	<?php
+	printf(
+		/* translators: %s: The current WordPress version number */
+		__( 'Congratulations on updating to WordPress %s! This update makes it easier than ever to fix your site if something goes wrong.' ),
+		$display_version
+	);
+	?>
+</p>
 
 <div class="wp-badge">
 	<?php
@@ -38,7 +46,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 	<a href="about.php" class="nav-tab"><?php _e( 'What&#8217;s New' ); ?></a>
 	<a href="credits.php" class="nav-tab nav-tab-active" aria-current="page"><?php _e( 'Credits' ); ?></a>
 	<a href="freedoms.php" class="nav-tab"><?php _e( 'Freedoms' ); ?></a>
-	<a href="freedoms.php?privacy-notice" class="nav-tab"><?php _e( 'Privacy' ); ?></a>
+	<a href="privacy.php" class="nav-tab"><?php _e( 'Privacy' ); ?></a>
 </nav>
 
 <div class="about-wrap-content">
