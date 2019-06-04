@@ -21,8 +21,8 @@
  /** Import env */
 require_once(__DIR__ . '/wp-env.php');
 
-define( 'WP_HOME', getenv('SERVER_NAME' ) );
-define( 'WP_SITEURL', getenv('SERVER_NAME' ) );
+define( 'WP_HOME', getenv('WP_HOME' ) );
+define( 'WP_SITEURL', getenv('WP_SITEURL' ) );
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -83,7 +83,7 @@ $table_prefix = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', getenv('WP_DEBUG') === 'ON' );
+define( 'WP_DEBUG', preg_match('/^on$/i', getenv('WP_DEBUG')) );
 
 /** Install plugins without ftp access
  * https://stackoverflow.com/questions/640409/can-i-install-update-wordpress-plugins-without-providing-ftp-access
