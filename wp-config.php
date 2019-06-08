@@ -90,6 +90,16 @@ define( 'WP_DEBUG', preg_match('/^on$/i', getenv('WP_DEBUG')) );
 */
 define('FS_METHOD', 'direct');
 
+/**
+ * Handle SSL reverse proxy
+ */
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') 
+  $_SERVER['HTTPS']='on';
+
+if (isset($_SERVER['HTTP_X_FORWARDED_HOST']))
+  $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
+
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
