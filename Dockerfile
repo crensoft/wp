@@ -1,17 +1,19 @@
-FROM alpine:3.9.4
+FROM alpine:3.9.4 as build
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY . /wp
+
 RUN apk update && apk upgrade && \
+  apk add zip && \
   apk add --no-cache php7 \
   php7-common \ 
   php7-json \
   php7-mbstring \
   php7-opcache \
   php7-openssl \
-  php7-phar
-
-RUN EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)" && \
+  php7-phar && \
+  EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)" && \
   php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
   ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")" && \
   if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]; \
@@ -25,10 +27,17 @@ RUN EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)
   rm composer-setup.php && \
   exit $RESULT
 
-COPY . /wp/
-
 RUN cd /wp && composer install --no-ansi --no-dev \
   --no-interaction --no-progress \
   --no-scripts --optimize-autoloader && \
-  rm Dockerfile .dockerignore
+  rm Dockerfile .dockerignore && \
+  zip -mr wp.zip * && \
+  rm -rf .git
+
+# ---
+
+FROM scratch
+
+COPY --from=build wp/wp.zip /wp/wp.zip
+
 
