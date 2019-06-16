@@ -1,4 +1,4 @@
-FROM alpine:3.9.4 as build
+FROM alpine:3.9 as build
 
 ENV DEBIAN_FRONTEND=noninteractive
 
