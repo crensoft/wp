@@ -18,9 +18,6 @@
  * @package WordPress
  */
 
- /** Import env */
-require_once(__DIR__ . '/wp-env.php');
-
 define( 'WP_HOME', getenv('WP_HOME' ) );
 define( 'WP_SITEURL', getenv('WP_SITEURL' ) );
 
@@ -93,12 +90,11 @@ define('FS_METHOD', 'direct');
 /**
  * Handle SSL reverse proxy
  */
-if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') 
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') 
   $_SERVER['HTTPS']='on';
 
 if (isset($_SERVER['HTTP_X_FORWARDED_HOST']))
   $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
-
 
 /* That's all, stop editing! Happy publishing. */
 

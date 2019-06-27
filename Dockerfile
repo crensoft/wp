@@ -1,4 +1,4 @@
-FROM alpine:3.9 as build
+FROM alpine:3.10 as build
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -18,9 +18,9 @@ RUN apk update && apk upgrade && \
   ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")" && \
   if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]; \
   then \
-      >&2 echo 'ERROR: Invalid installer signature' && \
-      rm composer-setup.php && \
-      exit 1; \
+  >&2 echo 'ERROR: Invalid installer signature' && \
+  rm composer-setup.php && \
+  exit 1; \
   fi && \
   php composer-setup.php --quiet --install-dir=/usr/local/bin --filename=composer && \
   RESULT=$? && \
@@ -34,10 +34,8 @@ RUN cd /wp && composer install --no-ansi --no-dev \
   zip -mr wp.zip * && \
   rm -rf .git
 
-# ---
+###
 
 FROM scratch
 
-COPY --from=build wp/wp.zip /wp/wp.zip
-
-
+COPY --from=build /wp/wp.zip /home/wp/
